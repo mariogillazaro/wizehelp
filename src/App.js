@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import {Route} from 'react-router-dom';
+import React from 'react';
+import {Provider} from 'react-redux';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
 import Home from './pages/home';
+import Store from './store/index';
 import linkBuilder from './builders/linkBuilder';
 import DepartmentSection from './builders/sectionBuilder';
 import './App.css';
@@ -12,38 +15,14 @@ const SECTIONS = [
   }
 ];
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.buildRoute = this.buildRoute.bind(this);
-    this.renderRoutes = this.renderRoutes.bind(this);
-  }
-
-  renderLinks(sections) {
-    return sections.map(linkBuilder);
-  }
-
-  buildRoute(section) {
-    return <Route path={section.to} render={() => section.component(this.props)}/>
-  }
-
-  renderRoutes(sections) {
-    return sections.map(this.buildRoute);
-  }
-
+class App extends React.Component {
   render() {
     return (
-      <div>
-        <header>
-          <nav>
-            {this.renderLinks(SECTIONS)}
-          </nav>
-        </header>
-        <main>
-          {this.renderRoutes(SECTIONS)}
-          <Route exact path='/' component={Home}/>
-        </main>
-      </div>
+      <Provider store={Store}>
+        <Router>
+          <Route path={'/'} component={Home}/>
+        </Router>
+      </Provider>
     );
   }
 }

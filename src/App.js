@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 
-import Home from './pages/home';
+import Content from './components/content';
 import Navigation from './components/navigation';
 import * as departmentActions from './reducers/departmentsReducer';
 import './App.css';
@@ -14,12 +14,13 @@ class App extends React.Component {
 
   render() {
     const departmentNames = this.props.departmentNames,
-          departmentPaths = this.props.departmentPaths;
+          departmentPaths = this.props.departmentPaths,
+          departmentComponents = this.props.departmentComponents;
     return (
       <Router>
         <div>
           <Navigation departmentNames={departmentNames} departmentPaths={departmentPaths}/>
-          <Route exact path="/" component={Home}/>
+          <Content departmentNames={departmentNames} departmentPaths={departmentPaths} departmentComponents={departmentComponents}/>
         </div>
       </Router>
     );
@@ -29,7 +30,8 @@ class App extends React.Component {
 const mapStateToProps = state => ({
   departments: departmentActions.getDepartments(state),
   departmentNames: departmentActions.getDepartmentNames(state),
-  departmentPaths: departmentActions.getDepartmentPaths(state)
+  departmentPaths: departmentActions.getDepartmentPaths(state),
+  departmentComponents: departmentActions.getDepartmentComponents(state)
 });
 
 const mapActionsToProps = {

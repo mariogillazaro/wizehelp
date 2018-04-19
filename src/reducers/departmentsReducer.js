@@ -21,6 +21,10 @@ export const loadDepartmentsToStore = () => async dispatch => {
 
 export const getDepartments = state => state.departmentReducer.departments;
 export const getDepartmentNames = state => state.departmentReducer.departments.map(department => department.name);
+export const getDepartmentComponents = state => state.departmentReducer.departments.reduce((namesToComponents, department ) => ({
+  ...namesToComponents,
+  [department.name]: department.component
+}), {});
 export const getDepartmentPaths = state => state.departmentReducer.departments.reduce((namesToPaths, department) => ({
   ...namesToPaths,
   [department.name]: department.path

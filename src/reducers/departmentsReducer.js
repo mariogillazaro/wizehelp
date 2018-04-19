@@ -14,7 +14,7 @@ const departmentsReducer = handleActions({
   [DEPARTMENTS_FETCH]: (state, action) => ({...state, departments: action.payload})
 }, DEFAULT_STATE);
 
-export const loadDepartmentsToState = () => async dispatch => {
+export const loadDepartmentsToStore = () => async dispatch => {
   const departments = await fetchDepartments();
   dispatch(fetchDepartmentsAction(departments));
 }

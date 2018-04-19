@@ -3,12 +3,12 @@ import {connect} from 'react-redux';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Home from './pages/home';
-import {loadDepartmentsToState, getDepartments} from './reducers/departmentsReducer';
+import {loadDepartmentsToStore, getDepartments} from './reducers/departmentsReducer';
 import './App.css';
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.loadDepartmentsToState();
+    this.props.loadDepartmentsToStore();
   }
 
   render() {
@@ -25,7 +25,7 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-  loadDepartmentsToState,
+  loadDepartmentsToStore,
   getDepartments
 };
 

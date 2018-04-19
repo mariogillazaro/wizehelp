@@ -1,24 +1,32 @@
 import React from 'react';
-import {Provider} from 'react-redux';
+import {connect} from 'react-redux';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Home from './pages/home';
-import Store from './store/index';
-import Departments from './data/departments';
-import linkBuilder from './builders/linkBuilder';
-import DepartmentSection from './builders/sectionBuilder';
+import {loadDepartmentsToState, getDepartments} from './reducers/departmentsReducer';
 import './App.css';
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.loadDepartmentsToState();
+  }
+
   render() {
     return (
-      <Provider store={Store}>
-        <Router>
-          <Route path={'/'} component={Home}/>
-        </Router>
-      </Provider>
+      <Router>
+        <Route path={'/'} component={Home}/>
+      </Router>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  departments: getDepartments(state)
+});
+
+const mapActionsToProps = {
+  loadDepartmentsToState,
+  getDepartments
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(App);

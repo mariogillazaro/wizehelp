@@ -5,7 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import Content from './components/content';
 import MainNavigation from './components/navigation';
 import * as departmentActions from './reducers/departmentsReducer';
-import './App.css';
+import './styles/App.css';
 
 class App extends React.Component {
   componentDidMount() {

@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import Proptypes from 'prop-types';
+import NavLink from './navLink';
 
-export default class Navigation extends React.Component {
+class Navigation extends React.Component {
   constructor(props) {
     super(props);
     this.renderNavLink = this.renderNavLink.bind(this);
@@ -13,7 +13,7 @@ export default class Navigation extends React.Component {
     const path = this.props.departmentPaths[name].path;
     if (!path) return null;
 
-    return <li key={name}><Link to={path}>{name}</Link></li>;
+    return <NavLink name={name} path={path}/>;
   }
 
   renderNavigation() {
@@ -37,3 +37,5 @@ Navigation.propTypes = {
   departmentNames: Proptypes.array,
   departmentPaths: Proptypes.object
 };
+
+export default Navigation;

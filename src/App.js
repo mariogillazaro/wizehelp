@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 import Content from './components/content';
-import Navigation from './components/navigation';
+import MainNavigation from './components/navigation';
 import * as departmentActions from './reducers/departmentsReducer';
 import './App.css';
 
@@ -19,7 +19,7 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Navigation departmentNames={departmentNames} departmentPaths={departmentPaths}/>
+          <MainNavigation departmentNames={departmentNames} departmentPaths={departmentPaths}/>
           <Content departmentNames={departmentNames} departmentPaths={departmentPaths} departmentComponents={departmentComponents}/>
         </div>
       </Router>

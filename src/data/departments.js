@@ -1,5 +1,11 @@
 const departments = [
   {
+    path: '/',
+    name: 'Home',
+    integration: {},
+    content: {}
+  },
+  {
     path: '/facilities',
     name: 'Facilities',
     integration: {},

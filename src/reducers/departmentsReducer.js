@@ -2,7 +2,7 @@ import {createAction, handleActions} from 'redux-actions';
 import DEPARTMENTS from '../data/departments';
 
 const DEFAULT_STATE ={
-  departments: {}
+  departments: []
 };
 const DEPARTMENTS_FETCH = 'DEPARTMENTS_FETCH';
 const fetchDepartmentsAction = createAction(DEPARTMENTS_FETCH);
@@ -20,4 +20,6 @@ export const loadDepartmentsToStore = () => async dispatch => {
 }
 
 export const getDepartments = state => state.departmentsReducer.departments;
+export const getDepartmentsNames = state => state.departmentsReducer.departments.map(department => department.name);
+export const getDepartmentsPaths = state => state.departmentsReducer.departments.map(department => ({[department.name]: department.path}));
 export default departmentsReducer;

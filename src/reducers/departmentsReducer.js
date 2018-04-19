@@ -27,6 +27,9 @@ export const getDepartmentComponents = state => state.departmentReducer.departme
 }), {});
 export const getDepartmentPaths = state => state.departmentReducer.departments.reduce((namesToPaths, department) => ({
   ...namesToPaths,
-  [department.name]: department.path
+  [department.name]: {
+    path: department.path,
+    isExact: department.isExact
+  }
 }), {});
 export default departmentReducer;

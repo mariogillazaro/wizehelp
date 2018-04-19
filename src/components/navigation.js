@@ -10,7 +10,7 @@ export default class Navigation extends React.Component {
   }
 
   renderNavLink(name) {
-    const path = this.props.departmentPaths[name];
+    const path = this.props.departmentPaths[name].path;
     if (!path) return null;
 
     return <li key={name}><Link to={path}>{name}</Link></li>;

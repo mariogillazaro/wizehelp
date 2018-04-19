@@ -15,19 +15,22 @@ const departments = [
     path: '/facilities',
     name: 'Facilities',
     integration: {},
-    component: Facilities
+    component: Facilities,
+    isExact: false
   },
   {
     path: '/people_ops',
     name: 'People Ops',
     integration: {},
-    component: People_Ops
+    component: People_Ops,
+    isExact: false
   },
   {
     path: '/security',
     name: 'Security',
     integration: {},
-    component: Security
+    component: Security,
+    isExact: false
   }
 ];
 

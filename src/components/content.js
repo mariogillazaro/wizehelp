@@ -10,11 +10,12 @@ export default class Content extends React.Component {
   }
 
   renderRoute(name) {
-    const path = this.props.departmentPaths[name],
-          component = this.props.departmentComponents[name];
+    const path = this.props.departmentPaths[name].path,
+          component = this.props.departmentComponents[name],
+          isExact = this.props.departmentPaths[name].isExact;
 
     if (!path) return null;
-    return <PropsRoute key={name} path={path} component={component}/>;
+    return <PropsRoute key={name} exact={isExact} path={path} component={component}/>;
   }
 
   renderRoutes() {

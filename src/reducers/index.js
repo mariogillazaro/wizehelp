@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import departmentsReducer from './departmentsReducer';
+import departmentReducer from './departmentsReducer';
 
 const Reducer = combineReducers({
-  departmentsReducer
+  departmentReducer
 });
 
 export default Reducer;

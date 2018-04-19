@@ -1,8 +1,7 @@
 import React from 'react';
-import DepartmentSection from '../builders/sectionBuilder';
 
 export default class Home extends React.Component {
   render() {
-    return <DepartmentSection {...this.props}/>;
+    return <p>{this.props.location.pathname}</p>;
   }
 }

@@ -10,7 +10,7 @@ const fetchDepartments = () => new Promise((resolve, reject) => {
   resolve(DEPARTMENTS);
 });
 
-const departmentsReducer = handleActions({
+const departmentReducer = handleActions({
   [DEPARTMENTS_FETCH]: (state, action) => ({...state, departments: action.payload})
 }, DEFAULT_STATE);
 
@@ -19,7 +19,10 @@ export const loadDepartmentsToStore = () => async dispatch => {
   dispatch(fetchDepartmentsAction(departments));
 }
 
-export const getDepartments = state => state.departmentsReducer.departments;
-export const getDepartmentsNames = state => state.departmentsReducer.departments.map(department => department.name);
-export const getDepartmentsPaths = state => state.departmentsReducer.departments.map(department => ({[department.name]: department.path}));
-export default departmentsReducer;
+export const getDepartments = state => state.departmentReducer.departments;
+export const getDepartmentNames = state => state.departmentReducer.departments.map(department => department.name);
+export const getDepartmentPaths = state => state.departmentReducer.departments.reduce((namesToPaths, department) => ({
+  ...namesToPaths,
+  [department.name]: department.path
+}), {});
+export default departmentReducer;
